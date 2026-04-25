@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --lime: #b8f000;
+  --lime-glow: rgba(184, 240, 0, 0.08);
+  --lime-border: rgba(184, 240, 0, 0.25);
+  --jet: #0a0a0a;
+  --surface: #141414;
+  --panel: #1c1c1c;
+  --muted: #5a5a5a;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.13);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--jet);
+  color: #f2f2f0;
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 300;
+  cursor: none;
+}
+
+/* Scan-line texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.025) 0px,
+    rgba(0, 0, 0, 0.025) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 9000;
+}
+
+.font-bebas { font-family: 'Bebas Neue', cursive; }
+.font-epilogue { font-family: 'Epilogue', sans-serif; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--jet); }
+::-webkit-scrollbar-thumb { background: var(--lime); border-radius: 2px; }
