@@ -30,8 +30,8 @@ function HaspLogoFooter() {
       style={{
         fontFamily: 'Epilogue, sans-serif',
         fontSize: 22,
-        fontWeight: 600,
-        color: '#f2f2f0',
+        fontWeight: 700,
+        color: '#0A0F1C',
         letterSpacing: '-0.01em',
         lineHeight: 1,
         gap: 2,
@@ -47,12 +47,12 @@ function HaspLogoFooter() {
 export default function Footer() {
   return (
     <footer
-      className="w-full px-5 md:px-16 py-8 md:py-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
-      style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
+      className="w-full bg-white px-5 md:px-16 py-8 md:py-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
+      style={{ borderTop: '1px solid rgba(37,99,235,0.12)' }}
     >
       <div className="flex-shrink-0">
         <HaspLogoFooter />
-        <p className="text-[11px] md:text-[12px] text-[#5a5a5a] mt-[6px]">
+        <p className="text-[11px] md:text-[12px] text-[#94A3B8] mt-[6px]">
           © 2025 Hasph Technologies. Global AI Software Company.
         </p>
       </div>
@@ -62,7 +62,7 @@ export default function Footer() {
           <a
             key={link}
             href="#"
-            className="text-[11px] md:text-[12px] text-[#5a5a5a] no-underline tracking-[0.08em] uppercase transition-colors duration-200 hover:text-[#2563EB]"
+            className="text-[11px] md:text-[12px] text-[#94A3B8] no-underline tracking-[0.08em] uppercase transition-colors duration-200 hover:text-[#2563EB]"
           >
             {link}
           </a>

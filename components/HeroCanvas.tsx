@@ -29,8 +29,8 @@ export default function HeroCanvas() {
 
     const blueColor  = new THREE.Color('#2563EB')
     const dimColor   = new THREE.Color('#1d4ed8')
-    const lightColor = new THREE.Color('#38BDF8')
-    const whiteColor = new THREE.Color('#f2f2f0')
+    const skyColor   = new THREE.Color('#38BDF8')
+    const navyColor  = new THREE.Color('#0F172A')
 
     for (let i = 0; i < particleCount; i++) {
       // Fibonacci sphere distribution
@@ -42,9 +42,9 @@ export default function HeroCanvas() {
       positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta)
       positions[i * 3 + 2] = r * Math.cos(phi)
 
-      // Color variation: blue / dim-blue / light-blue / white
+      // Color variation: blue / dim-blue / sky-blue / dark-navy
       const pick = Math.random()
-      const c = pick < 0.45 ? blueColor : pick < 0.7 ? dimColor : pick < 0.88 ? lightColor : whiteColor
+      const c = pick < 0.45 ? blueColor : pick < 0.7 ? dimColor : pick < 0.88 ? skyColor : navyColor
       colors[i * 3]     = c.r
       colors[i * 3 + 1] = c.g
       colors[i * 3 + 2] = c.b

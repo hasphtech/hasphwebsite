@@ -36,13 +36,13 @@ export default function Cursor() {
 
   return (
     <>
-      {/* Solid bright dot — visible on dark bg */}
+      {/* Solid blue dot */}
       <div
         ref={dotRef}
         className="fixed w-[10px] h-[10px] rounded-full pointer-events-none z-[9999]"
         style={{
-          background: '#38BDF8',
-          boxShadow: '0 0 8px 2px rgba(56,189,248,0.6)',
+          background: '#2563EB',
+          boxShadow: '0 0 6px 1px rgba(37,99,235,0.4)',
         }}
       />
       {/* Trailing ring */}
@@ -50,8 +50,7 @@ export default function Cursor() {
         ref={ringRef}
         className="fixed w-[36px] h-[36px] rounded-full pointer-events-none z-[9998] transition-all duration-[250ms]"
         style={{
-          border: '1.5px solid rgba(56,189,248,0.7)',
-          boxShadow: '0 0 6px rgba(56,189,248,0.2)',
+          border: '1.5px solid rgba(37,99,235,0.5)',
         }}
       />
     </>
