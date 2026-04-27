@@ -18,36 +18,33 @@ const products = [
   {
     num: '03',
     name: 'Gaming',
-    desc: 'Planning fot entering into Gaming space for kids and adults focused single and multiplayer games.',
-    tags: [{ label: 'Coming Soon' }, {label: 'Game'}],
+    desc: 'Planning for entering into Gaming space for kids and adults focused single and multiplayer games.',
+    tags: [{ label: 'Coming Soon' }, { label: 'Game' }],
   },
-
   {
     num: '04',
     name: 'Talent & Opportunity Network',
     desc: 'Smart matching between organisations and world-class freelancers, interns, and specialists — globally.',
     tags: [{ label: 'Coming Soon' }, { label: 'Network' }],
   },
-    
   {
     num: '05',
     name: 'Expanding Horizon',
     desc: 'More AI products on the roadmap. Hasph is a platform company — new verticals launch regularly.',
     tags: [{ label: 'Roadmap' }],
   },
-
 ]
 
 export default function Products() {
   return (
-    <section className="px-16 py-[120px]">
+    <section className="px-6 md:px-16 py-[60px] md:py-[120px]">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="flex justify-between items-end mb-16"
+        className="flex flex-col md:flex-row justify-between md:items-end mb-10 md:mb-16 gap-4"
       >
         <div>
           <p className="text-[10px] tracking-[0.3em] uppercase text-[#b8f000] font-[500] mb-4">
@@ -61,9 +58,6 @@ export default function Products() {
             <span style={{ color: '#2a2a2a' }}>PORTFOLIO</span>
           </h2>
         </div>
-        <p className="max-w-[300px] text-[14px] text-[#5a5a5a] leading-[1.75] font-[300] text-right">
-          {/*Each product is a precision tool — purpose-built with AI at its core, designed to work at global scale from day one.*/}
-        </p>
       </motion.div>
 
       {/* Rows */}
@@ -75,9 +69,9 @@ export default function Products() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative grid items-center gap-10 px-10 py-9 rounded-[4px] overflow-hidden transition-all duration-300 cursor-none"
+            className="group relative grid items-center gap-4 md:gap-10 px-5 md:px-10 py-6 md:py-9 rounded-[4px] overflow-hidden transition-all duration-300 cursor-pointer md:cursor-none"
             style={{
-              gridTemplateColumns: '80px 1fr auto auto',
+              gridTemplateColumns: '1fr',
               border: '1px solid rgba(255,255,255,0.08)',
               background: '#141414',
             }}
@@ -99,49 +93,83 @@ export default function Products() {
               className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#b8f000] origin-bottom transition-transform duration-300 scale-y-0 group-hover:scale-y-100"
             />
 
-            {/* Number */}
-            <div className="font-bebas text-[42px] tracking-[0.06em] leading-none" style={{ color: '#2a2a2a' }}>
-              {p.num}
+            {/* Desktop layout grid */}
+            <div className="hidden md:grid items-center gap-10" style={{ gridTemplateColumns: '80px 1fr auto auto' }}>
+              {/* Number */}
+              <div className="font-bebas text-[42px] tracking-[0.06em] leading-none" style={{ color: '#2a2a2a' }}>
+                {p.num}
+              </div>
+
+              {/* Info */}
+              <div>
+                <h3 className="font-bebas text-[28px] tracking-[0.08em] text-[#f2f2f0] mb-[6px]">
+                  {p.name}
+                </h3>
+                <p className="text-[13px] text-[#5a5a5a] leading-[1.65] font-[300]">{p.desc}</p>
+              </div>
+
+              {/* Tags */}
+              <div className="flex gap-2 flex-wrap">
+                {p.tags.map(t => (
+                  <span
+                    key={t.label}
+                    className="px-[14px] py-[5px] rounded-full text-[10px] font-[500] tracking-[0.08em]"
+                    style={
+                      t.live
+                        ? {
+                            border: '1px solid rgba(184,240,0,0.35)',
+                            color: '#b8f000',
+                            background: 'rgba(184,240,0,0.08)',
+                          }
+                        : {
+                            border: '1px solid rgba(255,255,255,0.13)',
+                            color: '#5a5a5a',
+                            background: 'transparent',
+                          }
+                    }
+                  >
+                    {t.label}
+                  </span>
+                ))}
+              </div>
+
+              {/* Arrow */}
+              <div className="text-[24px] text-[#5a5a5a] transition-all duration-300 group-hover:text-[#b8f000] group-hover:translate-x-1">
+                →
+              </div>
             </div>
 
-            {/* Info */}
-            <div>
-              <h3 className="font-bebas text-[28px] tracking-[0.08em] text-[#f2f2f0] mb-[6px]">
-                {p.name}
-              </h3>
+            {/* Mobile layout */}
+            <div className="flex md:hidden flex-col gap-3">
+              <div className="flex items-center justify-between">
+                <h3 className="font-bebas text-[22px] tracking-[0.08em] text-[#f2f2f0]">
+                  {p.name}
+                </h3>
+              </div>
               <p className="text-[13px] text-[#5a5a5a] leading-[1.65] font-[300]">{p.desc}</p>
-            </div>
-
-            {/* Tags */}
-            <div className="flex gap-2 flex-wrap">
-              {p.tags.map(t => (
-                <span
-                  key={t.label}
-                  className="px-[14px] py-[5px] rounded-full text-[10px] font-[500] tracking-[0.08em]"
-                  style={
-                    t.live
-                      ? {
-                          border: '1px solid rgba(184,240,0,0.35)',
-                          color: '#b8f000',
-                          background: 'rgba(184,240,0,0.08)',
-                        }
-                      : {
-                          border: '1px solid rgba(255,255,255,0.13)',
-                          color: '#5a5a5a',
-                          background: 'transparent',
-                        }
-                  }
-                >
-                  {t.label}
-                </span>
-              ))}
-            </div>
-
-            {/* Arrow */}
-            <div
-              className="text-[24px] text-[#5a5a5a] transition-all duration-300 group-hover:text-[#b8f000] group-hover:translate-x-1"
-            >
-              →
+              <div className="flex gap-2 flex-wrap">
+                {p.tags.map(t => (
+                  <span
+                    key={t.label}
+                    className="px-[12px] py-[4px] rounded-full text-[10px] font-[500] tracking-[0.08em]"
+                    style={
+                      t.live
+                        ? {
+                            border: '1px solid rgba(184,240,0,0.35)',
+                            color: '#b8f000',
+                            background: 'rgba(184,240,0,0.08)',
+                          }
+                        : {
+                            border: '1px solid rgba(255,255,255,0.13)',
+                            color: '#5a5a5a',
+                            background: 'transparent',
+                          }
+                    }
+                  >
+                    {t.label}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
         ))}

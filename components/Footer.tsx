@@ -1,11 +1,11 @@
 'use client'
 
-const links = ['Platform |','Products |','Careers |','Privacy |','Contact |']
+const links = ['Platform', 'Products', 'Careers', 'Privacy', 'Contact']
 
 export default function Footer() {
   return (
     <footer
-      className="px-16 py-12 flex justify-between items-center"
+      className="px-6 md:px-16 py-10 md:py-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-0"
       style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
     >
       <div>
@@ -21,7 +21,7 @@ export default function Footer() {
         </p>
       </div>
 
-      <div className="flex gap-7">
+      <div className="flex gap-5 md:gap-7 flex-wrap">
         {links.map(link => (
           <a
             key={link}
