@@ -6,12 +6,8 @@ module.exports = {
       colors: {
         blue: '#2563EB',
         'blue-light': '#38BDF8',
-        'blue-dim': '#1d4ed8',
-        bg: '#F8FAFF',
-        surface: '#FFFFFF',
-        panel: '#EEF2FF',
-        text: '#0A0F1C',
-        muted: '#64748B',
+        'blue-dark': '#0D1B3E',
+        'blue-mid': '#1E3A8A',
       },
       fontFamily: {
         bebas: ['"Bebas Neue"', 'cursive'],

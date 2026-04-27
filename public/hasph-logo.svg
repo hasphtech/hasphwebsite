@@ -1,14 +1,24 @@
 <svg width="520" height="160" viewBox="0 0 520 160" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2563EB"/>
-      <stop offset="100%" stop-color="#38BDF8"/>
-    </linearGradient>
-  </defs>
-  <text x="10" y="105" font-family="Inter, Arial, sans-serif" font-size="80" fill="#f2f2f0">has</text>
-  <g transform="translate(210,20)">
-    <circle cx="40" cy="60" r="30" stroke="url(#blueGrad)" stroke-width="10" fill="none"/>
-    <rect x="32" y="70" width="16" height="40" rx="8" fill="url(#blueGrad)"/>
+  <!-- has -->
+  <text x="10" y="105"
+        font-family="Inter, Arial, sans-serif"
+        font-size="80"
+        fill="#FFFFFF">has</text>
+  <!-- EXACT SAME P (scaled 0.5) -->
+  <g transform="translate(200,10) scale(0.5)">
+    <circle cx="128" cy="110" r="60"
+            stroke="#3B82F6"
+            stroke-width="14"
+            fill="none"/>
+    <rect x="118" y="120"
+          width="20"
+          height="70"
+          rx="10"
+          fill="#3B82F6"/>
   </g>
-  <text x="280" y="105" font-family="Inter, Arial, sans-serif" font-size="80" fill="#f2f2f0">h</text>
+  <!-- h -->
+  <text x="300" y="105"
+        font-family="Inter, Arial, sans-serif"
+        font-size="80"
+        fill="#FFFFFF">h</text>
 </svg>

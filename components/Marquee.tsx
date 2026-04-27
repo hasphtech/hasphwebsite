@@ -18,9 +18,10 @@ export default function Marquee() {
     <div
       className="w-full overflow-hidden py-[14px] md:py-[15px]"
       style={{
-        background: 'linear-gradient(90deg, #2563EB, #1d4ed8)',
-        borderTop: '1px solid rgba(255,255,255,0.08)',
-        borderBottom: '1px solid rgba(255,255,255,0.08)',
+        background: 'rgba(255,255,255,0.1)',
+        backdropFilter: 'blur(12px)',
+        borderTop: '1px solid rgba(255,255,255,0.14)',
+        borderBottom: '1px solid rgba(255,255,255,0.14)',
       }}
     >
       <div
@@ -32,7 +33,7 @@ export default function Marquee() {
             key={i}
             className="inline-flex items-center gap-[12px] md:gap-[18px] px-5 md:px-10 font-bebas text-[14px] md:text-[18px] tracking-[0.12em] uppercase text-white flex-shrink-0"
           >
-            <span className="w-[4px] h-[4px] md:w-[5px] md:h-[5px] rounded-full bg-[rgba(255,255,255,0.4)] flex-shrink-0" />
+            <span className="w-[4px] h-[4px] md:w-[5px] md:h-[5px] rounded-full flex-shrink-0" style={{ background: 'rgba(255,255,255,0.4)' }} />
             {item}
           </span>
         ))}

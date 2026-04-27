@@ -2,23 +2,19 @@
 
 const links = ['Platform', 'Products', 'Careers', 'Privacy', 'Contact']
 
-function PIconFooter({ size = 24 }: { size?: number }) {
+// Exact "p" geometry — same master spec as Nav
+function PIconFooter({ size = 26 }: { size?: number }) {
+  const w = size * (134 / 147)
   return (
     <svg
-      width={size * 0.72}
+      width={w}
       height={size}
-      viewBox="0 0 58 80"
+      viewBox="61 43 134 147"
       xmlns="http://www.w3.org/2000/svg"
       style={{ display: 'block', flexShrink: 0 }}
     >
-      <defs>
-        <linearGradient id="blueGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#2563EB" />
-          <stop offset="100%" stopColor="#38BDF8" />
-        </linearGradient>
-      </defs>
-      <circle cx="29" cy="28" r="20" stroke="url(#blueGradFooter)" strokeWidth="8" fill="none" />
-      <rect x="21" y="36" width="16" height="36" rx="8" fill="url(#blueGradFooter)" />
+      <circle cx="128" cy="110" r="60" stroke="#3B82F6" strokeWidth="14" fill="none" />
+      <rect x="118" y="120" width="20" height="70" rx="10" fill="#3B82F6" />
     </svg>
   )
 }
@@ -28,17 +24,17 @@ function HaspLogoFooter() {
     <div
       className="flex items-center"
       style={{
-        fontFamily: 'Epilogue, sans-serif',
+        fontFamily: 'Inter, Arial, sans-serif',
         fontSize: 22,
         fontWeight: 700,
-        color: '#0A0F1C',
+        color: '#FFFFFF',
         letterSpacing: '-0.01em',
         lineHeight: 1,
-        gap: 2,
+        gap: 1,
       }}
     >
       <span>has</span>
-      <PIconFooter size={25} />
+      <PIconFooter size={26} />
       <span>h</span>
     </div>
   )
@@ -47,12 +43,16 @@ function HaspLogoFooter() {
 export default function Footer() {
   return (
     <footer
-      className="w-full bg-white px-5 md:px-16 py-8 md:py-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
-      style={{ borderTop: '1px solid rgba(37,99,235,0.12)' }}
+      className="w-full px-5 md:px-16 py-8 md:py-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
+      style={{
+        borderTop: '1px solid rgba(255,255,255,0.14)',
+        background: 'rgba(0,0,0,0.2)',
+        backdropFilter: 'blur(16px)',
+      }}
     >
       <div className="flex-shrink-0">
         <HaspLogoFooter />
-        <p className="text-[11px] md:text-[12px] text-[#94A3B8] mt-[6px]">
+        <p className="text-[11px] md:text-[12px] mt-[6px]" style={{ color: 'rgba(255,255,255,0.45)' }}>
           © 2025 Hasph Technologies. Global AI Software Company.
         </p>
       </div>
@@ -62,7 +62,8 @@ export default function Footer() {
           <a
             key={link}
             href="#"
-            className="text-[11px] md:text-[12px] text-[#94A3B8] no-underline tracking-[0.08em] uppercase transition-colors duration-200 hover:text-[#2563EB]"
+            className="text-[11px] md:text-[12px] no-underline tracking-[0.08em] uppercase transition-colors duration-200 hover:text-white"
+            style={{ color: 'rgba(255,255,255,0.45)' }}
           >
             {link}
           </a>
