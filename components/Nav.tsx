@@ -5,6 +5,26 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const links = ['Platform', 'Products', 'Talent', 'Company']
 
+function HaspLogo({ width = 110 }: { width?: number }) {
+  const height = Math.round(width / 3.25)
+  return (
+    <svg width={width} height={height} viewBox="0 0 520 160" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="blueGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#2563EB" />
+          <stop offset="100%" stopColor="#38BDF8" />
+        </linearGradient>
+      </defs>
+      <text x="10" y="105" fontFamily="Inter, Arial, sans-serif" fontSize="80" fill="#f2f2f0">has</text>
+      <g transform="translate(210,20)">
+        <circle cx="40" cy="60" r="30" stroke="url(#blueGradNav)" strokeWidth="10" fill="none" />
+        <rect x="32" y="70" width="16" height="40" rx="8" fill="url(#blueGradNav)" />
+      </g>
+      <text x="280" y="105" fontFamily="Inter, Arial, sans-serif" fontSize="80" fill="#f2f2f0">h</text>
+    </svg>
+  )
+}
+
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -36,12 +56,8 @@ export default function Nav() {
         style={{ backdropFilter: scrolled ? 'blur(24px)' : 'none' }}
       >
         {/* Logo */}
-        <div className="flex items-center font-bebas text-[26px] md:text-[28px] tracking-[0.12em] text-[#f2f2f0] flex-shrink-0">
-          HASPH
-          <span
-            className="inline-block w-[7px] h-[7px] rounded-full bg-[#b8f000] ml-1"
-            style={{ animation: 'limePulse 2.5s ease-in-out infinite' }}
-          />
+        <div className="flex items-center flex-shrink-0">
+          <HaspLogo width={110} />
         </div>
 
         {/* Desktop Links */}
@@ -59,7 +75,7 @@ export default function Nav() {
           <li>
             <a
               href="#"
-              className="px-6 py-[9px] border border-[rgba(184,240,0,0.25)] text-[#b8f000] rounded-[4px] text-[13px] font-[500] tracking-[0.05em] transition-all duration-200 hover:bg-[#b8f000] hover:text-[#0a0a0a] hover:border-[#b8f000]"
+              className="px-6 py-[9px] border border-[rgba(37,99,235,0.35)] text-[#2563EB] rounded-[4px] text-[13px] font-[500] tracking-[0.05em] transition-all duration-200 hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB]"
             >
               Request Access
             </a>
@@ -105,7 +121,7 @@ export default function Nav() {
                 <a
                   href="#"
                   onClick={() => setMenuOpen(false)}
-                  className="inline-block px-6 py-[10px] border border-[rgba(184,240,0,0.25)] text-[#b8f000] rounded-[4px] text-[13px] font-[500] tracking-[0.05em] transition-all duration-200 hover:bg-[#b8f000] hover:text-[#0a0a0a] hover:border-[#b8f000]"
+                  className="inline-block px-6 py-[10px] border border-[rgba(37,99,235,0.35)] text-[#2563EB] rounded-[4px] text-[13px] font-[500] tracking-[0.05em] transition-all duration-200 hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB]"
                 >
                   Request Access
                 </a>

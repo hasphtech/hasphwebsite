@@ -27,8 +27,8 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none overflow-hidden"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(184,240,0,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(184,240,0,0.04) 1px, transparent 1px)
+            linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px)
           `,
           backgroundSize: '80px 80px',
           WebkitMaskImage: 'radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%)',
@@ -43,7 +43,7 @@ export default function Hero() {
           width: '100%',
           maxWidth: 600,
           aspectRatio: '1',
-          background: 'radial-gradient(circle, rgba(184,240,0,0.18) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 70%)',
           top: '-10%',
           left: '50%',
           transform: 'translateX(-50%)',
@@ -59,14 +59,14 @@ export default function Hero() {
           {/* Badge */}
           <motion.div {...fadeUp(0)} className="mb-8 md:mb-12">
             <span
-              className="inline-flex items-center gap-[10px] px-4 md:px-5 py-2 rounded-full text-[11px] md:text-[12px] font-[400] tracking-[0.1em] uppercase text-[#b8f000]"
+              className="inline-flex items-center gap-[10px] px-4 md:px-5 py-2 rounded-full text-[11px] md:text-[12px] font-[400] tracking-[0.1em] uppercase text-[#2563EB]"
               style={{
-                border: '1px solid rgba(184,240,0,0.25)',
-                background: 'rgba(184,240,0,0.08)',
+                border: '1px solid rgba(37,99,235,0.3)',
+                background: 'rgba(37,99,235,0.08)',
               }}
             >
               <span
-                className="w-[6px] h-[6px] rounded-full bg-[#b8f000] flex-shrink-0"
+                className="w-[6px] h-[6px] rounded-full bg-[#2563EB] flex-shrink-0"
                 style={{ animation: 'blink 1.6s ease-in-out infinite' }}
               />
               Virtual Software Company
@@ -80,7 +80,16 @@ export default function Hero() {
             style={{ fontSize: 'clamp(56px, 12vw, 160px)' }}
           >
             BUILD<br />
-            <span className="text-[#b8f000]">SMARTER</span><br />
+            <span
+              style={{
+                background: 'linear-gradient(90deg, #2563EB, #38BDF8)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              SMARTER
+            </span><br />
             <span
               style={{
                 WebkitTextStroke: '1.5px rgba(255,255,255,0.18)',
@@ -103,15 +112,17 @@ export default function Hero() {
           <motion.div {...fadeUp(0.4)}>
             <a
               href="#"
-              className="inline-block px-8 md:px-11 py-4 bg-[#b8f000] text-[#0a0a0a] rounded-[6px] font-[700] text-[14px] tracking-[0.06em] uppercase transition-all duration-200 hover:-translate-y-1 select-none"
+              className="inline-block px-8 md:px-11 py-4 bg-[#2563EB] text-white rounded-[6px] font-[700] text-[14px] tracking-[0.06em] uppercase select-none"
               style={{ transition: 'all 0.25s ease' }}
               onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 40px rgba(184,240,0,0.3)'
-                ;(e.currentTarget as HTMLElement).style.background = '#cdf533'
+                (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)'
+                ;(e.currentTarget as HTMLElement).style.boxShadow = '0 12px 40px rgba(37,99,235,0.4)'
+                ;(e.currentTarget as HTMLElement).style.background = '#3b82f6'
               }}
               onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = 'none'
-                ;(e.currentTarget as HTMLElement).style.background = '#b8f000'
+                (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'
+                ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
+                ;(e.currentTarget as HTMLElement).style.background = '#2563EB'
               }}
             >
               Explore Platform
@@ -131,14 +142,14 @@ export default function Hero() {
         {metrics.map(({ num, sup, label }, i) => (
           <div
             key={label}
-            className="px-4 md:px-10 py-5 md:py-8 text-center transition-colors duration-300 hover:bg-[rgba(184,240,0,0.05)]"
+            className="px-4 md:px-10 py-5 md:py-8 text-center transition-colors duration-300 hover:bg-[rgba(37,99,235,0.05)]"
             style={{
               borderRight: i < metrics.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none',
               borderBottom: '1px solid rgba(255,255,255,0.08)',
             }}
           >
             <div className="font-bebas text-[32px] md:text-[48px] tracking-[0.05em] text-[#f2f2f0] leading-none">
-              {num}<span className="text-[#b8f000]">{sup}</span>
+              {num}<span className="text-[#2563EB]">{sup}</span>
             </div>
             <div className="text-[9px] md:text-[11px] tracking-[0.15em] uppercase text-[#5a5a5a] mt-[6px]">
               {label}

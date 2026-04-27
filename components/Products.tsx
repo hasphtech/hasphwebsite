@@ -46,7 +46,7 @@ export default function Products() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="mb-10 md:mb-16"
       >
-        <p className="text-[10px] tracking-[0.3em] uppercase text-[#b8f000] font-[500] mb-4">
+        <p className="text-[10px] tracking-[0.3em] uppercase text-[#2563EB] font-[500] mb-4">
           What We Build
         </p>
         <h2
@@ -75,7 +75,7 @@ export default function Products() {
             onMouseEnter={e => {
               const el = e.currentTarget as HTMLElement
               el.style.background = '#1c1c1c'
-              el.style.borderColor = 'rgba(184,240,0,0.3)'
+              el.style.borderColor = 'rgba(37,99,235,0.3)'
             }}
             onMouseLeave={e => {
               const el = e.currentTarget as HTMLElement
@@ -84,7 +84,7 @@ export default function Products() {
             }}
           >
             {/* Accent bar */}
-            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#b8f000] origin-bottom transition-transform duration-300 scale-y-0 group-hover:scale-y-100" />
+            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#2563EB] origin-bottom transition-transform duration-300 scale-y-0 group-hover:scale-y-100" />
 
             {/* ── Desktop layout ── */}
             <div className="hidden md:grid items-center gap-8 px-10 py-9" style={{ gridTemplateColumns: '60px 1fr auto auto' }}>
@@ -102,7 +102,7 @@ export default function Products() {
                     className="px-[14px] py-[5px] rounded-full text-[10px] font-[500] tracking-[0.08em] whitespace-nowrap"
                     style={
                       t.live
-                        ? { border: '1px solid rgba(184,240,0,0.35)', color: '#b8f000', background: 'rgba(184,240,0,0.08)' }
+                        ? { border: '1px solid rgba(37,99,235,0.35)', color: '#2563EB', background: 'rgba(37,99,235,0.08)' }
                         : { border: '1px solid rgba(255,255,255,0.13)', color: '#5a5a5a', background: 'transparent' }
                     }
                   >
@@ -110,7 +110,7 @@ export default function Products() {
                   </span>
                 ))}
               </div>
-              <div className="text-[24px] text-[#5a5a5a] transition-colors duration-300 group-hover:text-[#b8f000]">→</div>
+              <div className="text-[24px] text-[#5a5a5a] transition-colors duration-300 group-hover:text-[#2563EB]">→</div>
             </div>
 
             {/* ── Mobile layout ── */}
@@ -124,7 +124,7 @@ export default function Products() {
                     className="px-[12px] py-[4px] rounded-full text-[10px] font-[500] tracking-[0.08em]"
                     style={
                       t.live
-                        ? { border: '1px solid rgba(184,240,0,0.35)', color: '#b8f000', background: 'rgba(184,240,0,0.08)' }
+                        ? { border: '1px solid rgba(37,99,235,0.35)', color: '#2563EB', background: 'rgba(37,99,235,0.08)' }
                         : { border: '1px solid rgba(255,255,255,0.13)', color: '#5a5a5a', background: 'transparent' }
                     }
                   >

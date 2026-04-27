@@ -1,0 +1,14 @@
+<svg width="520" height="160" viewBox="0 0 520 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+  <text x="10" y="105" font-family="Inter, Arial, sans-serif" font-size="80" fill="#f2f2f0">has</text>
+  <g transform="translate(210,20)">
+    <circle cx="40" cy="60" r="30" stroke="url(#blueGrad)" stroke-width="10" fill="none"/>
+    <rect x="32" y="70" width="16" height="40" rx="8" fill="url(#blueGrad)"/>
+  </g>
+  <text x="280" y="105" font-family="Inter, Arial, sans-serif" font-size="80" fill="#f2f2f0">h</text>
+</svg>

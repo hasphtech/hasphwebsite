@@ -39,11 +39,11 @@ export default function Cursor() {
       <div
         ref={dotRef}
         style={{ mixBlendMode: 'screen' }}
-        className="fixed w-[10px] h-[10px] rounded-full bg-[#b8f000] pointer-events-none z-[9999]"
+        className="fixed w-[10px] h-[10px] rounded-full bg-[#2563EB] pointer-events-none z-[9999]"
       />
       <div
         ref={ringRef}
-        className="fixed w-[36px] h-[36px] rounded-full border border-[rgba(184,240,0,0.5)] pointer-events-none z-[9998] transition-all duration-[250ms]"
+        className="fixed w-[36px] h-[36px] rounded-full border border-[rgba(37,99,235,0.5)] pointer-events-none z-[9998] transition-all duration-[250ms]"
       />
     </>
   )

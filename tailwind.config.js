@@ -4,8 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        lime: '#b8f000',
-        'lime-dim': '#8ab800',
+        blue: '#2563EB',
+        'blue-light': '#38BDF8',
+        'blue-dim': '#1d4ed8',
         jet: '#0a0a0a',
         surface: '#141414',
         panel: '#1c1c1c',

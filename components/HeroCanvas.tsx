@@ -27,8 +27,9 @@ export default function HeroCanvas() {
     const colors = new Float32Array(particleCount * 3)
     const sizes = new Float32Array(particleCount)
 
-    const limeColor = new THREE.Color('#b8f000')
-    const dimColor = new THREE.Color('#3a4a00')
+    const blueColor  = new THREE.Color('#2563EB')
+    const dimColor   = new THREE.Color('#1d4ed8')
+    const lightColor = new THREE.Color('#38BDF8')
     const whiteColor = new THREE.Color('#f2f2f0')
 
     for (let i = 0; i < particleCount; i++) {
@@ -41,9 +42,9 @@ export default function HeroCanvas() {
       positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta)
       positions[i * 3 + 2] = r * Math.cos(phi)
 
-      // Color variation: lime / dim-lime / white
+      // Color variation: blue / dim-blue / light-blue / white
       const pick = Math.random()
-      const c = pick < 0.55 ? limeColor : pick < 0.8 ? dimColor : whiteColor
+      const c = pick < 0.45 ? blueColor : pick < 0.7 ? dimColor : pick < 0.88 ? lightColor : whiteColor
       colors[i * 3]     = c.r
       colors[i * 3 + 1] = c.g
       colors[i * 3 + 2] = c.b
@@ -70,7 +71,7 @@ export default function HeroCanvas() {
     // ── INNER WIREFRAME ICOSAHEDRON ──
     const icoGeo = new THREE.IcosahedronGeometry(1.2, 1)
     const icoMat = new THREE.MeshBasicMaterial({
-      color: '#b8f000',
+      color: '#2563EB',
       wireframe: true,
       transparent: true,
       opacity: 0.06,
@@ -80,13 +81,13 @@ export default function HeroCanvas() {
 
     // ── OUTER RING ──
     const ringGeo = new THREE.TorusGeometry(2.1, 0.004, 8, 120)
-    const ringMat = new THREE.MeshBasicMaterial({ color: '#b8f000', transparent: true, opacity: 0.18 })
+    const ringMat = new THREE.MeshBasicMaterial({ color: '#2563EB', transparent: true, opacity: 0.18 })
     const ring = new THREE.Mesh(ringGeo, ringMat)
     ring.rotation.x = Math.PI / 2.5
     scene.add(ring)
 
     const ring2Geo = new THREE.TorusGeometry(2.4, 0.003, 8, 120)
-    const ring2Mat = new THREE.MeshBasicMaterial({ color: '#b8f000', transparent: true, opacity: 0.08 })
+    const ring2Mat = new THREE.MeshBasicMaterial({ color: '#38BDF8', transparent: true, opacity: 0.08 })
     const ring2 = new THREE.Mesh(ring2Geo, ring2Mat)
     ring2.rotation.x = Math.PI / 3
     ring2.rotation.y = Math.PI / 5
@@ -94,13 +95,13 @@ export default function HeroCanvas() {
 
     // ── FLOATING INNER CORE ──
     const coreGeo = new THREE.SphereGeometry(0.18, 32, 32)
-    const coreMat = new THREE.MeshBasicMaterial({ color: '#b8f000', transparent: true, opacity: 0.7 })
+    const coreMat = new THREE.MeshBasicMaterial({ color: '#2563EB', transparent: true, opacity: 0.7 })
     const core = new THREE.Mesh(coreGeo, coreMat)
     scene.add(core)
 
     // Core glow halo
     const haloGeo = new THREE.SphereGeometry(0.32, 32, 32)
-    const haloMat = new THREE.MeshBasicMaterial({ color: '#b8f000', transparent: true, opacity: 0.08, side: THREE.BackSide })
+    const haloMat = new THREE.MeshBasicMaterial({ color: '#38BDF8', transparent: true, opacity: 0.08, side: THREE.BackSide })
     const halo = new THREE.Mesh(haloGeo, haloMat)
     scene.add(halo)
 

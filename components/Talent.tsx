@@ -18,39 +18,39 @@ export default function Talent() {
         className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-[8px]"
         style={{ border: '1px solid rgba(255,255,255,0.08)' }}
       >
-        {/* Left — lime panel */}
+        {/* Left — blue panel */}
         <div
           className="relative px-6 py-10 md:px-[60px] md:py-[80px] flex flex-col justify-center overflow-hidden"
-          style={{ background: '#b8f000' }}
+          style={{ background: 'linear-gradient(135deg, #2563EB 0%, #1d4ed8 100%)' }}
         >
-          {/* Decorative circle — hidden on mobile to avoid overflow */}
+          {/* Decorative circle */}
           <div
             className="hidden md:block absolute rounded-full pointer-events-none"
             style={{
               width: 320, height: 320,
-              background: 'rgba(0,0,0,0.06)',
+              background: 'rgba(255,255,255,0.06)',
               bottom: -80, right: -80,
             }}
           />
 
-          <p className="text-[10px] tracking-[0.3em] uppercase text-[rgba(0,0,0,0.4)] font-[700] mb-4">
+          <p className="text-[10px] tracking-[0.3em] uppercase text-[rgba(255,255,255,0.55)] font-[700] mb-4">
             Talent Hub
           </p>
           <h2
-            className="font-bebas leading-none tracking-[0.06em] text-[#0a0a0a] mb-5"
+            className="font-bebas leading-none tracking-[0.06em] text-white mb-5"
             style={{ fontSize: 'clamp(36px, 5vw, 72px)' }}
           >
             WORK<br />WITH US
           </h2>
-          <p className="text-[14px] md:text-[15px] leading-[1.75] text-[rgba(0,0,0,0.55)] font-[400] max-w-[360px] mb-8 md:mb-10">
+          <p className="text-[14px] md:text-[15px] leading-[1.75] text-[rgba(255,255,255,0.72)] font-[400] max-w-[360px] mb-8 md:mb-10">
             Hasph is a virtual‑first AI company. We collaborate with the world&apos;s most talented builders, designers, analysts, and thinkers — wherever they are.
           </p>
           <a
             href="#"
-            className="inline-block self-start px-6 md:px-9 py-[12px] md:py-[14px] rounded-[6px] font-[600] text-[13px] md:text-[14px] tracking-[0.04em] text-[#b8f000] transition-all duration-200 hover:-translate-y-[2px] select-none"
-            style={{ background: '#0a0a0a' }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#1c1c1c' }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '#0a0a0a' }}
+            className="inline-block self-start px-6 md:px-9 py-[12px] md:py-[14px] rounded-[6px] font-[600] text-[13px] md:text-[14px] tracking-[0.04em] text-[#2563EB] transition-all duration-200 hover:-translate-y-[2px] select-none"
+            style={{ background: '#ffffff' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#e8f0fe' }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '#ffffff' }}
           >
             Explore Opportunities
           </a>
@@ -72,8 +72,8 @@ export default function Talent() {
               style={{ border: '1px solid rgba(255,255,255,0.08)' }}
               onMouseEnter={e => {
                 const el = e.currentTarget as HTMLElement
-                el.style.borderColor = 'rgba(184,240,0,0.3)'
-                el.style.background = 'rgba(184,240,0,0.05)'
+                el.style.borderColor = 'rgba(37,99,235,0.3)'
+                el.style.background = 'rgba(37,99,235,0.05)'
               }}
               onMouseLeave={e => {
                 const el = e.currentTarget as HTMLElement
@@ -100,7 +100,7 @@ export default function Talent() {
                 className="px-2 md:px-3 py-1 rounded-full text-[9px] md:text-[10px] font-[600] tracking-[0.08em] uppercase flex-shrink-0"
                 style={
                   role.open
-                    ? { background: 'rgba(184,240,0,0.1)', color: '#b8f000', border: '1px solid rgba(184,240,0,0.25)' }
+                    ? { background: 'rgba(37,99,235,0.1)', color: '#2563EB', border: '1px solid rgba(37,99,235,0.25)' }
                     : { background: 'transparent', color: '#5a5a5a', border: '1px solid rgba(255,255,255,0.13)' }
                 }
               >

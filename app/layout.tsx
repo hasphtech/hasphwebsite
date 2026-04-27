@@ -10,6 +10,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="overflow-x-hidden">
       <head>
+        <link rel="icon" type="image/svg+xml" href="/hasph-favicon.svg" />
+        <link rel="icon" href="/favicon-32.svg" sizes="32x32" type="image/svg+xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
