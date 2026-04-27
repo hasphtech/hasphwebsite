@@ -7,15 +7,15 @@ import Footer   from '@/components/Footer'
 
 export default function Home() {
   return (
-    <>
+    <div className="w-full overflow-x-hidden">
       <Nav />
-      <main>
+      <main className="w-full overflow-x-hidden">
         <Hero />
         <Marquee />
         <Products />
         <Talent />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

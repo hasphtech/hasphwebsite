@@ -15,7 +15,6 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', fn)
   }, [])
 
-  // Close menu on resize to desktop
   useEffect(() => {
     const fn = () => { if (window.innerWidth > 768) setMenuOpen(false) }
     window.addEventListener('resize', fn)
@@ -28,8 +27,8 @@ export default function Nav() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-[500] flex justify-between items-center h-[70px] transition-all duration-300
-          px-6 md:px-16
+        className={`fixed top-0 left-0 z-[500] w-full flex justify-between items-center h-[70px] transition-all duration-300
+          px-5 md:px-16
           ${scrolled
             ? 'bg-[rgba(10,10,10,0.92)] border-b border-[rgba(255,255,255,0.08)]'
             : 'bg-transparent'
@@ -37,7 +36,7 @@ export default function Nav() {
         style={{ backdropFilter: scrolled ? 'blur(24px)' : 'none' }}
       >
         {/* Logo */}
-        <div className="flex items-center font-bebas text-[28px] tracking-[0.12em] text-[#f2f2f0]">
+        <div className="flex items-center font-bebas text-[26px] md:text-[28px] tracking-[0.12em] text-[#f2f2f0] flex-shrink-0">
           HASPH
           <span
             className="inline-block w-[7px] h-[7px] rounded-full bg-[#b8f000] ml-1"
@@ -73,9 +72,9 @@ export default function Nav() {
           className="flex md:hidden flex-col justify-center items-center w-[40px] h-[40px] gap-[6px] bg-transparent border-none cursor-pointer"
           aria-label="Toggle menu"
         >
-          <span className={`block w-[22px] h-[1.5px] bg-[#f2f2f0] transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[7.5px]' : ''}`} />
+          <span className={`block w-[22px] h-[1.5px] bg-[#f2f2f0] transition-all duration-300 origin-center ${menuOpen ? 'rotate-45 translate-y-[7.5px]' : ''}`} />
           <span className={`block w-[22px] h-[1.5px] bg-[#f2f2f0] transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-          <span className={`block w-[22px] h-[1.5px] bg-[#f2f2f0] transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[7.5px]' : ''}`} />
+          <span className={`block w-[22px] h-[1.5px] bg-[#f2f2f0] transition-all duration-300 origin-center ${menuOpen ? '-rotate-45 -translate-y-[7.5px]' : ''}`} />
         </button>
       </motion.nav>
 
@@ -87,7 +86,7 @@ export default function Nav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
-            className="fixed top-[70px] left-0 right-0 z-[499] bg-[rgba(10,10,10,0.97)] border-b border-[rgba(255,255,255,0.08)] md:hidden"
+            className="fixed top-[70px] left-0 w-full z-[499] bg-[rgba(10,10,10,0.97)] border-b border-[rgba(255,255,255,0.08)] md:hidden"
             style={{ backdropFilter: 'blur(24px)' }}
           >
             <ul className="flex flex-col gap-2 p-6 list-none">

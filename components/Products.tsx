@@ -37,41 +37,38 @@ const products = [
 
 export default function Products() {
   return (
-    <section className="px-6 md:px-16 py-[60px] md:py-[120px]">
+    <section className="w-full overflow-hidden px-5 md:px-16 py-[60px] md:py-[120px]">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="flex flex-col md:flex-row justify-between md:items-end mb-10 md:mb-16 gap-4"
+        className="mb-10 md:mb-16"
       >
-        <div>
-          <p className="text-[10px] tracking-[0.3em] uppercase text-[#b8f000] font-[500] mb-4">
-            What We Build
-          </p>
-          <h2
-            className="font-bebas leading-none tracking-[0.06em] text-[#f2f2f0]"
-            style={{ fontSize: 'clamp(44px, 6vw, 80px)' }}
-          >
-            OUR<br />
-            <span style={{ color: '#2a2a2a' }}>PORTFOLIO</span>
-          </h2>
-        </div>
+        <p className="text-[10px] tracking-[0.3em] uppercase text-[#b8f000] font-[500] mb-4">
+          What We Build
+        </p>
+        <h2
+          className="font-bebas leading-none tracking-[0.06em] text-[#f2f2f0]"
+          style={{ fontSize: 'clamp(40px, 6vw, 80px)' }}
+        >
+          OUR<br />
+          <span style={{ color: '#2a2a2a' }}>PORTFOLIO</span>
+        </h2>
       </motion.div>
 
       {/* Rows */}
-      <div className="flex flex-col gap-[2px]">
+      <div className="flex flex-col gap-[2px] w-full">
         {products.map((p, i) => (
           <motion.div
             key={p.num}
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative grid items-center gap-4 md:gap-10 px-5 md:px-10 py-6 md:py-9 rounded-[4px] overflow-hidden transition-all duration-300 cursor-pointer md:cursor-none"
+            transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            className="group relative overflow-hidden rounded-[4px] transition-colors duration-300"
             style={{
-              gridTemplateColumns: '1fr',
               border: '1px solid rgba(255,255,255,0.08)',
               background: '#141414',
             }}
@@ -79,73 +76,46 @@ export default function Products() {
               const el = e.currentTarget as HTMLElement
               el.style.background = '#1c1c1c'
               el.style.borderColor = 'rgba(184,240,0,0.3)'
-              el.style.transform = 'translateX(6px)'
             }}
             onMouseLeave={e => {
               const el = e.currentTarget as HTMLElement
               el.style.background = '#141414'
               el.style.borderColor = 'rgba(255,255,255,0.08)'
-              el.style.transform = 'translateX(0)'
             }}
           >
             {/* Accent bar */}
-            <div
-              className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#b8f000] origin-bottom transition-transform duration-300 scale-y-0 group-hover:scale-y-100"
-            />
+            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#b8f000] origin-bottom transition-transform duration-300 scale-y-0 group-hover:scale-y-100" />
 
-            {/* Desktop layout grid */}
-            <div className="hidden md:grid items-center gap-10" style={{ gridTemplateColumns: '80px 1fr auto auto' }}>
-              {/* Number */}
+            {/* ── Desktop layout ── */}
+            <div className="hidden md:grid items-center gap-8 px-10 py-9" style={{ gridTemplateColumns: '60px 1fr auto auto' }}>
               <div className="font-bebas text-[42px] tracking-[0.06em] leading-none" style={{ color: '#2a2a2a' }}>
                 {p.num}
               </div>
-
-              {/* Info */}
-              <div>
-                <h3 className="font-bebas text-[28px] tracking-[0.08em] text-[#f2f2f0] mb-[6px]">
-                  {p.name}
-                </h3>
+              <div className="min-w-0">
+                <h3 className="font-bebas text-[26px] tracking-[0.08em] text-[#f2f2f0] mb-[6px]">{p.name}</h3>
                 <p className="text-[13px] text-[#5a5a5a] leading-[1.65] font-[300]">{p.desc}</p>
               </div>
-
-              {/* Tags */}
-              <div className="flex gap-2 flex-wrap">
+              <div className="flex gap-2 flex-wrap flex-shrink-0">
                 {p.tags.map(t => (
                   <span
                     key={t.label}
-                    className="px-[14px] py-[5px] rounded-full text-[10px] font-[500] tracking-[0.08em]"
+                    className="px-[14px] py-[5px] rounded-full text-[10px] font-[500] tracking-[0.08em] whitespace-nowrap"
                     style={
                       t.live
-                        ? {
-                            border: '1px solid rgba(184,240,0,0.35)',
-                            color: '#b8f000',
-                            background: 'rgba(184,240,0,0.08)',
-                          }
-                        : {
-                            border: '1px solid rgba(255,255,255,0.13)',
-                            color: '#5a5a5a',
-                            background: 'transparent',
-                          }
+                        ? { border: '1px solid rgba(184,240,0,0.35)', color: '#b8f000', background: 'rgba(184,240,0,0.08)' }
+                        : { border: '1px solid rgba(255,255,255,0.13)', color: '#5a5a5a', background: 'transparent' }
                     }
                   >
                     {t.label}
                   </span>
                 ))}
               </div>
-
-              {/* Arrow */}
-              <div className="text-[24px] text-[#5a5a5a] transition-all duration-300 group-hover:text-[#b8f000] group-hover:translate-x-1">
-                →
-              </div>
+              <div className="text-[24px] text-[#5a5a5a] transition-colors duration-300 group-hover:text-[#b8f000]">→</div>
             </div>
 
-            {/* Mobile layout */}
-            <div className="flex md:hidden flex-col gap-3">
-              <div className="flex items-center justify-between">
-                <h3 className="font-bebas text-[22px] tracking-[0.08em] text-[#f2f2f0]">
-                  {p.name}
-                </h3>
-              </div>
+            {/* ── Mobile layout ── */}
+            <div className="flex md:hidden flex-col gap-3 px-5 py-5">
+              <h3 className="font-bebas text-[20px] tracking-[0.08em] text-[#f2f2f0]">{p.name}</h3>
               <p className="text-[13px] text-[#5a5a5a] leading-[1.65] font-[300]">{p.desc}</p>
               <div className="flex gap-2 flex-wrap">
                 {p.tags.map(t => (
@@ -154,16 +124,8 @@ export default function Products() {
                     className="px-[12px] py-[4px] rounded-full text-[10px] font-[500] tracking-[0.08em]"
                     style={
                       t.live
-                        ? {
-                            border: '1px solid rgba(184,240,0,0.35)',
-                            color: '#b8f000',
-                            background: 'rgba(184,240,0,0.08)',
-                          }
-                        : {
-                            border: '1px solid rgba(255,255,255,0.13)',
-                            color: '#5a5a5a',
-                            background: 'transparent',
-                          }
+                        ? { border: '1px solid rgba(184,240,0,0.35)', color: '#b8f000', background: 'rgba(184,240,0,0.08)' }
+                        : { border: '1px solid rgba(255,255,255,0.13)', color: '#5a5a5a', background: 'transparent' }
                     }
                   >
                     {t.label}
