@@ -4,10 +4,12 @@ import Marquee  from '@/components/Marquee'
 import Products from '@/components/Products'
 import Talent   from '@/components/Talent'
 import Footer   from '@/components/Footer'
+import Cursor   from '@/components/Cursor'
 
 export default function Home() {
   return (
     <div className="w-full overflow-x-hidden">
+      <Cursor />
       <Nav />
       <main className="w-full overflow-x-hidden">
         <Hero />
