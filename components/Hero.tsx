@@ -91,8 +91,10 @@ export default function Hero() {
             </span><br />
             <span
               style={{
-                WebkitTextStroke: '1.5px rgba(37,99,235,0.2)',
-                color: 'transparent',
+                background: 'linear-gradient(90deg, #94A3B8, #CBD5E1, #E2E8F0)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
               }}
             >
               FUTURES
