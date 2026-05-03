@@ -3,51 +3,48 @@
 /**
  * HaspLogo — official Hasph brand wordmark component
  *
- * Renders "has" + branded "p" mark (ring + stem, blue gradient) + "h"
- * in Nunito 800 for the rounded letterforms matching the brand guide.
+ * Renders "has" + branded "p" mark (thick-ring bowl + stem, blue→cyan gradient) + "h"
+ * in Nunito 800, matching the brand guide wordmark exactly.
  *
- * Props:
- *   fontSize  – controls overall scale (default 26)
- *   textColor – color of "has" and "h" spans (default white for dark backgrounds)
+ * Key geometry insight from brand guide:
+ *   The "p" mark has a THICK ring — stroke width ≈ 55% of ring radius —
+ *   giving the bold donut shape visible in the app icon. The old implementation
+ *   used sw=14 vs r=60 (23%) which rendered as a hairline at small sizes.
  */
 
-interface PMarkProps {
-  size: number
-}
+// ─── "p" mark SVG ────────────────────────────────────────────────────────────
+//
+// ViewBox: 0 0 70 100
+//
+//   Ring  (bowl):  cx=35, cy=38, r=24, strokeWidth=16
+//     outer-radius = 32  → ring outer Ø 64
+//     inner-radius = 16  → visible hole Ø 32  (inner/outer ≈ 50% — bold donut)
+//     bounds: top=6  bottom=70  left=3  right=67
+//
+//   Stem (descender): x=27 y=50 w=16 h=46 rx=8
+//     stem width = strokeWidth  →  consistent visual weight with ring
+//     stem bottom = 96  →  descender extends cleanly below bowl
+//
+// At fontSize=26 (nav), rendered SVG is ≈ 22 × 32 px:
+//   ring outer Ø ≈ 20.5 px,  stroke ≈ 5.1 px/side  →  bold, clearly donut-shaped
 
-/**
- * The iconic Hasph "p" mark:
- * • A thick circular ring (bowl) with a dark-blue → sky-blue gradient
- * • A rounded-rect stem (descender) below the ring
- *
- * Geometry kept identical to the original hasph-p.svg master spec so the
- * shape is faithful to the brand guide.
- */
-function PMarkIcon({ size }: PMarkProps) {
-  // Original coordinate space from master spec
-  // viewBox covers exactly the visible "p" bounds
-  const vx = 61, vy = 43, vw = 134, vh = 147
-  const width = (size * vw) / vh
+function PMarkIcon({ size }: { size: number }) {
+  const w = size * (70 / 100)
 
   return (
     <svg
-      width={width}
+      width={w}
       height={size}
-      viewBox={`${vx} ${vy} ${vw} ${vh}`}
+      viewBox="0 0 70 100"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       style={{ display: 'block', flexShrink: 0 }}
     >
       <defs>
-        {/*
-          Gradient aligned to the actual coordinate space so the colour
-          shift runs top-left (deeper blue) → bottom-right (sky cyan),
-          matching the brand guide app icon.
-        */}
+        {/* diagonal top-left → bottom-right, darker-blue → sky-cyan */}
         <linearGradient
-          id="hasph-pmark-g"
-          x1={vx}        y1={vy}
-          x2={vx + vw}   y2={vy + vh}
+          id="hasph-pg"
+          x1="0" y1="0" x2="70" y2="100"
           gradientUnits="userSpaceOnUse"
         >
           <stop offset="0%"   stopColor="#1D4ED8" />
@@ -56,30 +53,31 @@ function PMarkIcon({ size }: PMarkProps) {
         </linearGradient>
       </defs>
 
-      {/* Ring / Bowl */}
+      {/* ── Ring / Bowl ── thick-stroke circle matching brand donut shape */}
       <circle
-        cx="128" cy="110" r="60"
-        stroke="url(#hasph-pmark-g)"
-        strokeWidth="14"
+        cx="35" cy="38" r="24"
+        stroke="url(#hasph-pg)"
+        strokeWidth="16"
         fill="none"
-        strokeLinecap="round"
       />
 
-      {/* Stem / Descender */}
+      {/* ── Stem / Descender ── same width as ring stroke for visual unity */}
       <rect
-        x="118" y="120"
-        width="20" height="70"
-        rx="10"
-        fill="url(#hasph-pmark-g)"
+        x="27" y="50"
+        width="16" height="46"
+        rx="8"
+        fill="url(#hasph-pg)"
       />
     </svg>
   )
 }
 
+// ─── Wordmark ─────────────────────────────────────────────────────────────────
+
 interface HaspLogoProps {
-  /** Overall font size; the p-mark scales proportionally (default 26) */
+  /** Controls overall scale — text fontSize in px (default 26) */
   fontSize?: number
-  /** Text colour for "has" and "h" — use white on dark backgrounds */
+  /** Colour for "has" and "h" spans — white for dark backgrounds */
   textColor?: string
 }
 
@@ -103,8 +101,11 @@ export default function HaspLogo({
       aria-label="Hasph"
     >
       <span>has</span>
-      {/* p-mark is 20 % taller than fontSize to expose the descender */}
-      <PMarkIcon size={fontSize * 1.22} />
+      {/*
+        p-mark height = fontSize × 1.25 so the descender peeks below the
+        text baseline while the bowl aligns with the cap-height of "has"/"h".
+      */}
+      <PMarkIcon size={fontSize * 1.25} />
       <span>h</span>
     </div>
   )
