@@ -2,48 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import HaspLogo from './HaspLogo'
 
 const links = ['Platform', 'Products', 'Talent', 'Company']
-
-// Exact "p" geometry from master hasph-p.svg
-// Original: circle cx=128 cy=110 r=60 sw=14 | rect x=118 y=120 w=20 h=70 rx=10
-// viewBox crops to the visible p bounds: x[61..195] y[43..190]
-function PIcon({ size = 30 }: { size?: number }) {
-  const w = size * (134 / 147)
-  return (
-    <svg
-      width={w}
-      height={size}
-      viewBox="61 43 134 147"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ display: 'block', flexShrink: 0 }}
-    >
-      <circle cx="128" cy="110" r="60" stroke="#3B82F6" strokeWidth="14" fill="none" />
-      <rect x="118" y="120" width="20" height="70" rx="10" fill="#3B82F6" />
-    </svg>
-  )
-}
-
-function HaspLogo({ fontSize = 26 }: { fontSize?: number }) {
-  return (
-    <div
-      className="flex items-center"
-      style={{
-        fontFamily: 'Inter, Arial, sans-serif',
-        fontSize,
-        fontWeight: 700,
-        color: '#FFFFFF',
-        letterSpacing: '-0.01em',
-        lineHeight: 1,
-        gap: 1,
-      }}
-    >
-      <span>has</span>
-      <PIcon size={fontSize * 1.2} />
-      <span>h</span>
-    </div>
-  )
-}
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -76,7 +37,7 @@ export default function Nav() {
       >
         {/* Logo */}
         <div className="flex items-center flex-shrink-0">
-          <HaspLogo fontSize={26} />
+          <HaspLogo fontSize={26} textColor="#FFFFFF" />
         </div>
 
         {/* Desktop Links */}
