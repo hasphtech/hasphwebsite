@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="flex-shrink-0">
         <HaspLogo fontSize={22} textColor="#FFFFFF" />
         <p className="text-[11px] md:text-[12px] mt-[6px]" style={{ color: 'rgba(255,255,255,0.45)' }}>
-          © 2025 Hasph Technologies. Global AI Software Company.
+          © 2026 Hasph Technologies. Global AI Software Company.
         </p>
       </div>
 
