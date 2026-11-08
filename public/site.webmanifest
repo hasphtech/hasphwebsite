@@ -4,8 +4,8 @@
   "description": "Hasph — Virtual Software Company",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0A0F1C",
-  "theme_color": "#3B82F6",
+  "background_color": "#FFFFFF",
+  "theme_color": "#4F35D2",
   "icons": [
     {
       "src": "/icon-32.png",
@@ -18,7 +18,7 @@
       "type": "image/png"
     },
     {
-      "src": "/hasph-p.svg",
+      "src": "/hasph-favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"

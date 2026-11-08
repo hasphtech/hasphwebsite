@@ -4,138 +4,92 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import HaspLogo from './HaspLogo'
 
-const links = ['Platform', 'Products', 'Talent', 'Company']
+const links = [
+  { label: 'About',    href: '#about' },
+  { label: 'Products', href: '#products' },
+  { label: 'Process',  href: '#process' },
+  { label: 'Careers',  href: '#careers' },
+]
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', fn)
+    const fn = () => setScrolled(window.scrollY > 16)
+    fn()
+    window.addEventListener('scroll', fn, { passive: true })
     return () => window.removeEventListener('scroll', fn)
   }, [])
 
-  useEffect(() => {
-    const fn = () => { if (window.innerWidth > 768) setMenuOpen(false) }
-    window.addEventListener('resize', fn)
-    return () => window.removeEventListener('resize', fn)
-  }, [])
-
   return (
-    <>
+    <header
+      className="fixed top-0 left-0 w-full z-[500] transition-all duration-300"
+      style={{
+        background: scrolled || open ? 'rgba(255,255,255,0.86)' : 'transparent',
+        backdropFilter: scrolled || open ? 'blur(16px)' : 'none',
+        borderBottom: scrolled ? '1px solid #E6E3F7' : '1px solid transparent',
+      }}
+    >
       <motion.nav
-        initial={{ y: -80, opacity: 0 }}
+        initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 z-[500] w-full flex justify-between items-center h-[70px] transition-all duration-300 px-5 md:px-16
-          ${scrolled ? 'border-b border-[rgba(255,255,255,0.12)]' : ''}`}
-        style={{
-          background: scrolled ? 'rgba(13,27,62,0.75)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(24px)' : 'none',
-        }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="max-w-[1180px] mx-auto px-5 md:px-8 h-[72px] flex items-center justify-between"
       >
-        {/* Logo */}
-        <div className="flex items-center flex-shrink-0">
-          <HaspLogo fontSize={26} textColor="#FFFFFF" />
-        </div>
+        <a href="#top" aria-label="Hasph home"><HaspLogo fontSize={24} /></a>
 
-        {/* Desktop Links */}
-        <ul className="hidden md:flex items-center gap-[38px] list-none">
-          {links.map((link) => (
-            <li key={link}>
-              <a
-                href="#"
-                className="no-underline text-[13px] font-[500] tracking-[0.03em] transition-colors duration-200"
-                style={{ color: 'rgba(255,255,255,0.7)' }}
-                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#FFFFFF'}
-                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.7)'}
-              >
-                {link}
+        <ul className="hidden md:flex items-center gap-9 list-none">
+          {links.map(l => (
+            <li key={l.label}>
+              <a href={l.href} className="text-[14px] font-[500] no-underline transition-colors duration-200 text-[#5B6078] hover:text-[#4F35D2]">
+                {l.label}
               </a>
             </li>
           ))}
-          <li>
-            <a
-              href="#"
-              className="px-6 py-[9px] rounded-[4px] text-[13px] font-[600] tracking-[0.03em] transition-all duration-200"
-              style={{
-                border: '1px solid rgba(255,255,255,0.5)',
-                color: '#FFFFFF',
-                background: 'transparent',
-              }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLElement
-                el.style.background = 'rgba(255,255,255,0.15)'
-                el.style.borderColor = 'rgba(255,255,255,0.8)'
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLElement
-                el.style.background = 'transparent'
-                el.style.borderColor = 'rgba(255,255,255,0.5)'
-              }}
-            >
-              Request Access
-            </a>
-          </li>
         </ul>
 
-        {/* Mobile Hamburger */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="flex md:hidden flex-col justify-center items-center w-[40px] h-[40px] gap-[6px] bg-transparent border-none cursor-pointer"
-          aria-label="Toggle menu"
-        >
-          <span className={`block w-[22px] h-[1.5px] bg-white transition-all duration-300 origin-center ${menuOpen ? 'rotate-45 translate-y-[7.5px]' : ''}`} />
-          <span className={`block w-[22px] h-[1.5px] bg-white transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-          <span className={`block w-[22px] h-[1.5px] bg-white transition-all duration-300 origin-center ${menuOpen ? '-rotate-45 -translate-y-[7.5px]' : ''}`} />
-        </button>
+        <div className="flex items-center gap-3">
+          <a
+            href="#contact"
+            className="hidden md:inline-flex px-5 py-[11px] rounded-full text-[14px] font-[600] no-underline text-white transition-all duration-200 hover:-translate-y-[1px]"
+            style={{ background: '#4F35D2', boxShadow: '0 8px 20px rgba(79,53,210,0.25)' }}
+          >
+            Request access
+          </a>
+          <button
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+            className="md:hidden flex flex-col gap-[5px] w-10 h-10 items-center justify-center bg-transparent border-none"
+          >
+            <span className={`block w-[20px] h-[2px] bg-[#0F1226] transition-all ${open ? 'rotate-45 translate-y-[7px]' : ''}`} />
+            <span className={`block w-[20px] h-[2px] bg-[#0F1226] transition-all ${open ? 'opacity-0' : ''}`} />
+            <span className={`block w-[20px] h-[2px] bg-[#0F1226] transition-all ${open ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+          </button>
+        </div>
       </motion.nav>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
-        {menuOpen && (
+        {open && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
-            className="fixed top-[70px] left-0 w-full z-[499] border-b border-[rgba(255,255,255,0.12)] md:hidden"
-            style={{
-              background: 'rgba(13,27,62,0.92)',
-              backdropFilter: 'blur(24px)',
-            }}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="md:hidden overflow-hidden"
+            style={{ borderTop: '1px solid #E6E3F7' }}
           >
-            <ul className="flex flex-col gap-2 p-6 list-none">
-              {links.map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    onClick={() => setMenuOpen(false)}
-                    className="block py-3 no-underline text-[15px] font-[500] tracking-[0.03em] transition-colors duration-200 hover:text-white"
-                    style={{ color: 'rgba(255,255,255,0.7)' }}
-                  >
-                    {link}
+            <ul className="flex flex-col p-5 list-none">
+              {[...links, { label: 'Request access', href: '#contact' }].map(l => (
+                <li key={l.label}>
+                  <a href={l.href} onClick={() => setOpen(false)} className="block py-3 text-[16px] font-[500] text-[#0F1226] no-underline">
+                    {l.label}
                   </a>
                 </li>
               ))}
-              <li className="mt-2">
-                <a
-                  href="#"
-                  onClick={() => setMenuOpen(false)}
-                  className="inline-block px-6 py-[10px] text-white rounded-[4px] text-[13px] font-[600] tracking-[0.03em] transition-all duration-200"
-                  style={{
-                    border: '1px solid rgba(255,255,255,0.5)',
-                    background: 'rgba(255,255,255,0.1)',
-                  }}
-                >
-                  Request Access
-                </a>
-              </li>
             </ul>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </header>
   )
 }

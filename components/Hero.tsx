@@ -1,175 +1,131 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { HaspMark } from './HaspLogo'
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 30 },
+const ease = [0.16, 1, 0.3, 1] as [number, number, number, number]
+const up = (d = 0) => ({
+  initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] },
+  transition: { duration: 0.9, delay: d, ease },
 })
 
-const metrics = [
-  { num: '1', sup: '+',    label: 'Saas Live' },
-  { num: '1', sup: 'K+',  label: 'Global Users' },
-  { num: '99', sup: '.9%', label: 'Platform Uptime' },
-  { num: '∞',  sup: '',    label: 'Possibilities' },
-]
+const bars = [40, 58, 46, 74, 56, 88, 68, 100]
 
 export default function Hero() {
   return (
-    <section
-      className="relative w-full overflow-hidden flex flex-col"
-      style={{ minHeight: '100dvh', paddingTop: 70 }}
-    >
-      {/* ── Subtle white grid overlay ── */}
+    <section id="top" className="relative w-full overflow-hidden" style={{ background: 'linear-gradient(180deg,#F4F2FF 0%,#FFFFFF 100%)' }}>
+      {/* dotted backdrop */}
       <div
-        className="absolute inset-0 pointer-events-none overflow-hidden"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 80px',
-          WebkitMaskImage: 'radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%)',
-          maskImage: 'radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%)',
+          backgroundImage: 'radial-gradient(#CFC7F5 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
+          WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 25%, black 20%, transparent 75%)',
+          maskImage: 'radial-gradient(ellipse 70% 60% at 50% 25%, black 20%, transparent 75%)',
         }}
       />
 
-      {/* ── Radial light bloom ── */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          width: '100%',
-          maxWidth: 700,
-          aspectRatio: '1',
-          background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)',
-          top: '-15%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          filter: 'blur(80px)',
-          animation: 'drift1 13s ease-in-out infinite',
-        }}
-      />
+      <div className="relative max-w-[1180px] mx-auto px-5 md:px-8 pt-[130px] md:pt-[170px] pb-[70px] md:pb-[100px] text-center">
+        <motion.div {...up(0)} className="inline-flex items-center gap-2 px-4 py-[7px] rounded-full text-[13px] font-[600]" style={{ background: '#fff', border: '1px solid #E6E3F7', color: '#4F35D2', boxShadow: '0 2px 10px rgba(79,53,210,0.08)' }}>
+          <span className="w-[7px] h-[7px] rounded-full bg-[#4F35D2]" style={{ animation: 'blink 1.8s infinite' }} />
+          Virtual-first AI software company
+        </motion.div>
 
-      {/* ── Main hero body ── */}
-      <div className="flex-1 flex items-center justify-center relative z-10 w-full">
-        <div className="w-full max-w-[800px] mx-auto px-6 md:px-16 text-center flex flex-col items-center">
+        <motion.h1
+          {...up(0.1)}
+          className="mt-7 mx-auto font-[800] tracking-[-0.045em] leading-[1.02] max-w-[900px]"
+          style={{ fontSize: 'clamp(32px, 7.2vw, 92px)', color: '#0F1226' }}
+        >
+          Smarter software for a{' '}
+          <span style={{ background: 'linear-gradient(95deg,#4F35D2,#8B6BFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            connected world
+          </span>
+        </motion.h1>
 
-          {/* Badge */}
-          <motion.div {...fadeUp(0)} className="mb-8 md:mb-12">
-            <span
-              className="inline-flex items-center gap-[10px] px-4 md:px-5 py-2 rounded-full text-[11px] md:text-[12px] font-[600] tracking-[0.1em] uppercase text-white"
-              style={{
-                border: '1px solid rgba(255,255,255,0.3)',
-                background: 'rgba(255,255,255,0.1)',
-              }}
-            >
-              <span
-                className="w-[6px] h-[6px] rounded-full bg-white flex-shrink-0"
-                style={{ animation: 'blink 1.6s ease-in-out infinite' }}
-              />
-              Virtual Software Company
-            </span>
-          </motion.div>
+        <motion.p {...up(0.22)} className="mt-6 mx-auto text-[17px] md:text-[19px] leading-[1.65] max-w-[600px] text-[#5B6078]">
+          Hasph designs and ships AI-native products that solve real problems at scale — from planning and wellbeing to talent and play.
+        </motion.p>
 
-          {/* Heading */}
-          <motion.h1
-            {...fadeUp(0.1)}
-            className="font-bebas leading-[0.92] tracking-[0.04em] text-white w-full"
-            style={{ fontSize: 'clamp(56px, 12vw, 160px)' }}
-          >
-            BUILD<br />
-            <span
-              style={{
-                background: 'linear-gradient(90deg, #FFFFFF, #BAE6FD)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              SMARTER
-            </span><br />
-            <span
-              style={{
-                background: 'linear-gradient(90deg, rgba(255,255,255,0.45), rgba(255,255,255,0.2), rgba(255,255,255,0.08))',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              FUTURES
-            </span>
-          </motion.h1>
+        <motion.div {...up(0.34)} className="mt-9 flex flex-wrap justify-center gap-3">
+          <a href="#products" className="inline-flex items-center gap-2 px-8 py-[15px] rounded-full text-[15px] font-[600] no-underline text-white transition-all duration-200 hover:-translate-y-[2px]" style={{ background: '#4F35D2', boxShadow: '0 12px 28px rgba(79,53,210,0.3)' }}>
+            Explore products →
+          </a>
+          <a href="#careers" className="inline-flex items-center px-8 py-[15px] rounded-full text-[15px] font-[600] no-underline text-[#0F1226] transition-all duration-200 hover:-translate-y-[2px]" style={{ background: '#fff', border: '1px solid #DDD8F5' }}>
+            Join the team
+          </a>
+        </motion.div>
 
-          {/* Description */}
-          <motion.p
-            {...fadeUp(0.25)}
-            className="mt-6 md:mt-9 mb-10 md:mb-14 text-[15px] md:text-[18px] leading-[1.75] font-[400] max-w-[540px] px-2"
-            style={{ color: 'rgba(255,255,255,0.72)' }}
-          >
-            Hasph intelligent software that solves real‑world problems at scale — from productivity to platform services, talent to transformation.
-          </motion.p>
+        {/* Dashboard showcase */}
+        <motion.div {...up(0.5)} className="relative mt-16 md:mt-24 mx-auto max-w-[980px] text-left">
+          <div className="rounded-[26px] p-3 md:p-4" style={{ background: 'rgba(255,255,255,0.7)', border: '1px solid #E6E3F7', boxShadow: '0 40px 90px rgba(79,53,210,0.16)' }}>
+            <div className="rounded-[18px] overflow-hidden" style={{ background: '#fff', border: '1px solid #EEEAFB' }}>
+              {/* window bar */}
+              <div className="flex items-center gap-2 px-5 py-3" style={{ borderBottom: '1px solid #EEEAFB', background: '#FBFAFF' }}>
+                {['#FF8A8A', '#FFD27A', '#8EE3A5'].map(c => <span key={c} className="w-[10px] h-[10px] rounded-full" style={{ background: c }} />)}
+                <span className="ml-3 text-[12px] text-[#8A8FA8]">hasph.com / planning-suite</span>
+              </div>
 
-          {/* CTA */}
-          <motion.div {...fadeUp(0.4)}>
-            <a
-              href="#"
-              className="inline-block px-8 md:px-11 py-4 rounded-[6px] font-[700] text-[14px] tracking-[0.06em] uppercase select-none text-[#1E3A8A]"
-              style={{
-                background: '#FFFFFF',
-                transition: 'all 0.25s ease',
-              }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLElement
-                el.style.transform = 'translateY(-3px)'
-                el.style.boxShadow = '0 12px 40px rgba(255,255,255,0.25)'
-                el.style.background = '#EFF6FF'
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLElement
-                el.style.transform = 'translateY(0)'
-                el.style.boxShadow = 'none'
-                el.style.background = '#FFFFFF'
-              }}
-            >
-              Explore Platform
-            </a>
-          </motion.div>
-        </div>
-      </div>
+              <div className="grid grid-cols-1 md:grid-cols-[210px_1fr]">
+                <div className="hidden md:flex flex-col gap-1 p-5" style={{ borderRight: '1px solid #EEEAFB' }}>
+                  <div className="mb-4"><HaspMark size={30} /></div>
+                  {['Overview', 'Goals', 'Insights', 'Team', 'Settings'].map((t, i) => (
+                    <div key={t} className="px-3 py-[9px] rounded-[10px] text-[13px] font-[500]" style={i === 0 ? { background: '#EDE9FE', color: '#4F35D2' } : { color: '#5B6078' }}>{t}</div>
+                  ))}
+                </div>
 
-      {/* ── Metrics strip ── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.9, delay: 0.55 }}
-        className="grid grid-cols-2 md:grid-cols-4 relative z-10 w-full"
-        style={{
-          borderTop: '1px solid rgba(255,255,255,0.14)',
-          background: 'rgba(0,0,0,0.15)',
-          backdropFilter: 'blur(12px)',
-        }}
-      >
-        {metrics.map(({ num, sup, label }, i) => (
-          <div
-            key={label}
-            className="px-4 md:px-10 py-5 md:py-8 text-center transition-colors duration-300"
-            style={{
-              borderRight: i < metrics.length - 1 ? '1px solid rgba(255,255,255,0.14)' : 'none',
-              borderBottom: '1px solid rgba(255,255,255,0.14)',
-            }}
-            onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)'}
-            onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'transparent'}
-          >
-            <div className="font-bebas text-[32px] md:text-[48px] tracking-[0.05em] text-white leading-none">
-              {num}<span style={{ color: '#BAE6FD' }}>{sup}</span>
-            </div>
-            <div className="text-[9px] md:text-[11px] tracking-[0.15em] uppercase mt-[6px]" style={{ color: 'rgba(255,255,255,0.5)' }}>
-              {label}
+                <div className="p-5 md:p-7">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <div className="text-[12px] text-[#8A8FA8]">Intelligent Planning Suite</div>
+                      <div className="text-[22px] md:text-[26px] font-[700] tracking-[-0.03em] text-[#0F1226]">Weekly outcomes</div>
+                    </div>
+                    <span className="px-3 py-1 rounded-full text-[12px] font-[600]" style={{ background: '#E7F8EE', color: '#1B8A4B' }}>● Live</span>
+                  </div>
+
+                  <div className="mt-6 grid grid-cols-3 gap-3">
+                    {[['Goals on track', '87%'], ['AI suggestions', '24'], ['Time saved', '6.5h']].map(([l, v]) => (
+                      <div key={l} className="rounded-[14px] p-4" style={{ background: '#F7F5FF', border: '1px solid #EEEAFB' }}>
+                        <div className="text-[11px] md:text-[12px] text-[#8A8FA8]">{l}</div>
+                        <div className="text-[20px] md:text-[26px] font-[700] tracking-[-0.03em] text-[#0F1226] mt-1">{v}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 flex items-end gap-2 md:gap-3 h-[130px]">
+                    {bars.map((h, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ height: 0 }}
+                        animate={{ height: `${h}%` }}
+                        transition={{ duration: 0.9, delay: 0.9 + i * 0.07, ease }}
+                        className="flex-1 rounded-[8px]"
+                        style={{ background: i === bars.length - 1 ? 'linear-gradient(180deg,#8B6BFF,#4F35D2)' : '#E4DEFB' }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        ))}
-      </motion.div>
+
+          {/* floating chips */}
+          <div className="hidden md:flex absolute -left-10 top-[34%] items-center gap-3 px-4 py-3 rounded-[16px]" style={{ background: '#fff', border: '1px solid #E6E3F7', boxShadow: '0 18px 40px rgba(79,53,210,0.15)', animation: 'float 6s ease-in-out infinite' }}>
+            <div className="w-[34px] h-[34px] rounded-[10px] flex items-center justify-center text-white text-[16px]" style={{ background: '#4F35D2' }}>✦</div>
+            <div>
+              <div className="text-[13px] font-[600] text-[#0F1226]">AI insight ready</div>
+              <div className="text-[11px] text-[#8A8FA8]">Plan adjusted for next week</div>
+            </div>
+          </div>
+          <div className="hidden md:flex absolute -right-8 bottom-[12%] items-center gap-3 px-4 py-3 rounded-[16px]" style={{ background: '#fff', border: '1px solid #E6E3F7', boxShadow: '0 18px 40px rgba(79,53,210,0.15)', animation: 'float 7s ease-in-out infinite 1s' }}>
+            <div className="text-[22px]">🌍</div>
+            <div>
+              <div className="text-[13px] font-[600] text-[#0F1226]">1K+ global users</div>
+              <div className="text-[11px] text-[#8A8FA8]">99.9% uptime</div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </section>
   )
 }

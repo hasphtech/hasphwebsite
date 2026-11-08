@@ -2,36 +2,22 @@
 
 import HaspLogo from './HaspLogo'
 
-const links = ['Platform', 'Products', 'Careers', 'Privacy', 'Contact']
+const links = ['About', 'Products', 'Careers', 'Privacy', 'Contact']
+const hrefs: Record<string, string> = { About: '#about', Products: '#products', Careers: '#careers', Privacy: '#', Contact: '#contact' }
 
 export default function Footer() {
   return (
-    <footer
-      className="w-full px-5 md:px-16 py-8 md:py-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
-      style={{
-        borderTop: '1px solid rgba(255,255,255,0.14)',
-        background: 'rgba(0,0,0,0.2)',
-        backdropFilter: 'blur(16px)',
-      }}
-    >
-      <div className="flex-shrink-0">
-        <HaspLogo fontSize={22} textColor="#FFFFFF" />
-        <p className="text-[11px] md:text-[12px] mt-[6px]" style={{ color: 'rgba(255,255,255,0.45)' }}>
-          © 2026 Hasph Technologies. Global AI Software Company.
-        </p>
-      </div>
-
-      <div className="flex gap-4 md:gap-7 flex-wrap">
-        {links.map(link => (
-          <a
-            key={link}
-            href="#"
-            className="text-[11px] md:text-[12px] no-underline tracking-[0.08em] uppercase transition-colors duration-200 hover:text-white"
-            style={{ color: 'rgba(255,255,255,0.45)' }}
-          >
-            {link}
-          </a>
-        ))}
+    <footer className="w-full" style={{ borderTop: '1px solid #E6E3F7', background: '#fff' }}>
+      <div className="max-w-[1180px] mx-auto px-5 md:px-8 py-10 md:py-14 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        <div>
+          <HaspLogo fontSize={22} />
+          <p className="text-[13px] mt-3 text-[#8A8FA8]">© 2026 Hasph</p>
+        </div>
+        <nav className="flex flex-wrap gap-6 md:gap-8">
+          {links.map(l => (
+            <a key={l} href={hrefs[l]} className="text-[14px] font-[500] no-underline text-[#5B6078] transition-colors duration-200 hover:text-[#4F35D2]">{l}</a>
+          ))}
+        </nav>
       </div>
     </footer>
   )
